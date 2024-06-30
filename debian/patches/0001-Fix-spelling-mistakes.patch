@@ -1,0 +1,53 @@
+From 781ed34bee122a9c56fe776420d963be454c94fc Mon Sep 17 00:00:00 2001
+From: Peter Spiess-Knafl <peter.knafl@gmail.com>
+Date: Tue, 16 Aug 2016 09:32:26 +0200
+Subject: [PATCH] Fix spelling mistakes
+
+---
+ src/jsonrpccpp/client/connectors/unixdomainsocketclient.cpp | 2 +-
+ src/jsonrpccpp/common/specificationparser.cpp               | 2 +-
+ src/jsonrpccpp/server/connectors/httpserver.cpp             | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/jsonrpccpp/client/connectors/unixdomainsocketclient.cpp b/src/jsonrpccpp/client/connectors/unixdomainsocketclient.cpp
+index 585e88d..160ef1b 100644
+--- a/src/jsonrpccpp/client/connectors/unixdomainsocketclient.cpp
++++ b/src/jsonrpccpp/client/connectors/unixdomainsocketclient.cpp
+@@ -44,7 +44,7 @@ void UnixDomainSocketClient::SendRPCMessage(const std::string& message, std::str
+ 	socket_fd = socket(AF_UNIX, SOCK_STREAM, 0);
+ 	if (socket_fd < 0)
+ 	{
+-		throw JsonRpcException(Errors::ERROR_CLIENT_CONNECTOR, "Could not created unix domain socket");
++        throw JsonRpcException(Errors::ERROR_CLIENT_CONNECTOR, "Could not create unix domain socket");
+ 	}
+ 
+ 	memset(&address, 0, sizeof(sockaddr_un));
+diff --git a/src/jsonrpccpp/common/specificationparser.cpp b/src/jsonrpccpp/common/specificationparser.cpp
+index e900431..29890b7 100644
+--- a/src/jsonrpccpp/common/specificationparser.cpp
++++ b/src/jsonrpccpp/common/specificationparser.cpp
+@@ -44,7 +44,7 @@ vector<Procedure>   SpecificationParser::GetProceduresFromString(const string &c
+         GetProcedure(val[i], proc);
+         if (procnames.find(proc.GetProcedureName()) != procnames.end())
+         {
+-            throw JsonRpcException(Errors::ERROR_SERVER_PROCEDURE_SPECIFICATION_SYNTAX, "Procedurename not uniqe: " + proc.GetProcedureName());
++            throw JsonRpcException(Errors::ERROR_SERVER_PROCEDURE_SPECIFICATION_SYNTAX, "Procedurename not unique: " + proc.GetProcedureName());
+         }
+         procnames[proc.GetProcedureName()] = proc;
+         result.push_back(proc);
+diff --git a/src/jsonrpccpp/server/connectors/httpserver.cpp b/src/jsonrpccpp/server/connectors/httpserver.cpp
+index 5ec15a2..40d3c5e 100644
+--- a/src/jsonrpccpp/server/connectors/httpserver.cpp
++++ b/src/jsonrpccpp/server/connectors/httpserver.cpp
+@@ -147,7 +147,7 @@ int HttpServer::callback(void *cls, MHD_Connection *connection, const char *url,
+             if (handler == NULL)
+             {
+                 client_connection->code = MHD_HTTP_INTERNAL_SERVER_ERROR;
+-                client_connection->server->SendResponse("No client conneciton handler found", client_connection);
++                client_connection->server->SendResponse("No client connection handler found", client_connection);
+             }
+             else
+             {
+-- 
+2.8.1
+
