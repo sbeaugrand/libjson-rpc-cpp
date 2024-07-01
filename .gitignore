@@ -57,3 +57,6 @@ lib
 gen
 win32-deps
 **/*.dir/*
+
+.pc
+obj-x86_64-linux-gnu

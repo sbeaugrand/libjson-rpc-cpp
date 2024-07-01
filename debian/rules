@@ -9,9 +9,15 @@ override_dh_auto_configure:
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_SHARED_LIBS=YES \
 		-DBUILD_STATIC_LIBS=YES \
-		-DCOMPILE_EXAMPLES=YES \
-		-DCOMPILE_STUBGEN=YES
+		-DCOMPILE_STUBGEN=YES \
+		-DCOMPILE_TESTS=NO \
+		-DCOMPILE_EXAMPLES=NO \
+		-DREDIS_SERVER=NO \
+		-DREDIS_CLIENT=NO \
+		-DFILE_DESCRIPTOR_SERVER=NO \
+		-DFILE_DESCRIPTOR_CLIENT=NO \
+		-DWITH_COVERAGE=NO
 
 override_dh_strip:
-	dh_strip --dbgsym-migration='libjsonrpccpp-common0-dbg (<< 0.7.0-2~), libjsonrpccpp-server0-dbg (<< 0.7.0-2~), libjsonrpccpp-client0-dbg (<< 0.7.0-2~), libjsonrpccpp-stub0-dbg (<< 0.7.0-2~)'
+	dh_strip --dbgsym-migration='libjsonrpccpp-common0-dbg (<< 1.4.1-1~), libjsonrpccpp-server0-dbg (<< 1.4.1-1~), libjsonrpccpp-client0-dbg (<< 1.4.1-1~), libjsonrpccpp-stub0-dbg (<< 1.4.1-1~)'
 

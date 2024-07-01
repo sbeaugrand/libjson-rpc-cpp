@@ -30,3 +30,16 @@ test: build
 clean:
 	rm -rf build
 	rm -rf reports
+
+.PHONY: orig
+orig:
+	@cd .. && tar czf libjson-rpc-cpp_1.4.1.orig.tar.gz\
+	 --exclude=.git\
+	 --exclude=debian\
+	 --exclude=obj-x86_64-linux-gnu\
+	 --exclude=.pc\
+	 libjson-rpc-cpp
+
+.PHONY: package
+package:
+	@dpkg-buildpackage --no-sign

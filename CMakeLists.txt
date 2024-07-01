@@ -18,7 +18,7 @@ cmake_policy(SET CMP0012 NEW)
 
 if (${CMAKE_MAJOR_VERSION} GREATER 2)
     # old policy do not use MACOSX_RPATH
-    cmake_policy(SET CMP0042 OLD)
+    #cmake_policy(SET CMP0042 OLD)
 endif()
 
 set(MAJOR_VERSION 1)
